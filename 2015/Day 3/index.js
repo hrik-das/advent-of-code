@@ -4,7 +4,7 @@ fs.readFile("input.txt", "utf8", (error, data) => {
         console.error("Error Reading File : ",error);
         return;
     }
-    const directions = data.split("");
+    const directions = data.trim().split("");
     let santaPosition = {
         x: 0,
         y: 0
@@ -14,7 +14,7 @@ fs.readFile("input.txt", "utf8", (error, data) => {
         y: 0
     };
     let visitedHouses = new Map();
-    visitedHouses.set("0,0", 2);
+    visitedHouses.set("0, 0", 2);
     let totalHousesVisited = 1;
     let isSanta = true;
     for(let direction of directions){

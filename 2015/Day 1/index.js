@@ -11,7 +11,7 @@ fs.readFile("input.txt", "utf8", (error, data) => {
     ary.forEach((element, index) => {
         (element == "(") ? floor++ : floor--;
         if(floor === -1 && !shown){
-            console.log(`The Floor == -1 Position is : ${index + 1}`);
+            console.log(`The First "Floor == -1" Position is : ${index + 1}`);
             shown = true;
         }
     });
