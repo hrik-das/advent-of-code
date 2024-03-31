@@ -26,7 +26,6 @@ const parseInstruction = instruction => {
 
 const calculateWire = wireName => {
     const wire = wires.get(wireName);
-
     if(typeof wireName === "number") return wireName;
     if(typeof wire === "number") return wire;
     if(typeof wire === "undefined") return undefined;
@@ -44,5 +43,5 @@ input.forEach(instruction => {
   wires.set(parsedInstruction.destination, {command: parsedInstruction.command, args: parsedInstruction.args});
 });
 
-wires.set('b', 16076);    // In my case answer is 16076
-console.log(calculateWire('a'));
+wires.set("b", 16076);    // In my case answer is 16076
+console.log(calculateWire("a"));
