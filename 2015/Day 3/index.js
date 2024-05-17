@@ -5,14 +5,8 @@ fs.readFile("input.txt", "utf8", (error, data) => {
         return;
     }
     const directions = data.trim().split("");
-    let santaPosition = {
-        x: 0,
-        y: 0
-    };
-    let roboSantaPosition = { 
-        x: 0,
-        y: 0
-    };
+    let santaPosition = {x: 0, y: 0};
+    let roboSantaPosition = {x: 0, y: 0};
     let visitedHouses = new Map();
     visitedHouses.set("0, 0", 2);
     let totalHousesVisited = 1;

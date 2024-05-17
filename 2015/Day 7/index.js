@@ -30,17 +30,17 @@ const calculateWire = wireName => {
     if(typeof wire === "number") return wire;
     if(typeof wire === "undefined") return undefined;
 
-    if(!wire.command){
+    if(!wire.command)
         wires.set(wireName, calculateWire(wire.args[0]));
-    }else{
+    else
         wires.set(wireName, bitwiseMethods[wire.command](calculateWire(wire.args[0]), calculateWire(wire.args[1])));
-    }
+
     return wires.get(wireName);
 };
 
 input.forEach(instruction => {
-  const parsedInstruction = parseInstruction(instruction);
-  wires.set(parsedInstruction.destination, {command: parsedInstruction.command, args: parsedInstruction.args});
+    const parsedInstruction = parseInstruction(instruction);
+    wires.set(parsedInstruction.destination, {command: parsedInstruction.command, args: parsedInstruction.args});
 });
 
 wires.set("b", 16076);    // In my case answer is 16076
