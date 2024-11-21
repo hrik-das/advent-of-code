@@ -17,7 +17,7 @@ const parseInstruction = instruction => {
     const args = instruction.match(argumentRegex);
     const destination = args.pop();
 
-    return{
+    return {
         command: command && command[0],
         args: args.map(arg => isNaN(Number(arg)) ? arg : Number(arg)),
         destination: destination
@@ -26,11 +26,11 @@ const parseInstruction = instruction => {
 
 const calculateWire = wireName => {
     const wire = wires.get(wireName);
-    if(typeof wireName === "number") return wireName;
-    if(typeof wire === "number") return wire;
-    if(typeof wire === "undefined") return undefined;
+    if (typeof wireName === "number") return wireName;
+    if (typeof wire === "number") return wire;
+    if (typeof wire === "undefined") return undefined;
 
-    if(!wire.command)
+    if (!wire.command)
         wires.set(wireName, calculateWire(wire.args[0]));
     else
         wires.set(wireName, bitwiseMethods[wire.command](calculateWire(wire.args[0]), calculateWire(wire.args[1])));
