@@ -18,7 +18,9 @@ const buildCircuit = function (instructions) {
 const evaluateSignals = function (wires, wire, cache = {}) {
   if (!isNaN(wire)) {
     return parseInt(wire);
-  } else if (cache[wire] !== undefined) {
+  }
+
+  if (cache[wire] !== undefined) {
     return cache[wire];
   }
 
@@ -29,8 +31,7 @@ const evaluateSignals = function (wires, wire, cache = {}) {
   if (tokens.length === 1) {
     result = evaluateSignals(wires, tokens[0], cache);
   } else if (tokens.length === 2 && tokens[0] === "NOT") {
-    const value = evaluateSignals(wires, tokens[1], cache);
-    result = ~value & 0xffff;
+    result = ~evaluateSignals(wires, tokens[1], cache);
   } else if (tokens.length === 3) {
     const [left, operation, right] = tokens;
     const a = isNaN(left)
@@ -53,12 +54,11 @@ const evaluateSignals = function (wires, wire, cache = {}) {
       case "RSHIFT":
         result = a >> b;
         break;
-      default: throw new Error(`Unknown operation: ${operation}`);
+      default:
+        throw new Error(`Unknown operation: ${operation}`);
     }
   } else {
-    throw new Error(
-      `Unrecognized expression for wire "${wire}": ${expression}`
-    );
+    throw new Error(`Unknown expression: ${expression}`);
   }
 
   cache[wire] = result;
