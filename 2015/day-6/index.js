@@ -5,7 +5,6 @@ const readSantaInstructions = function (file, encoding) {
 };
 
 const parseSantaInstruction = function (instruction) {
-  // .split() Splits on literal space. but when you use .split() with a regex that has capture groups, and it behaves like It behaves like: “Split the string wherever the regex matches, but also return the capturing groups as elements in the result.”
   const [, command, x1, y1, x2, y2] = instruction.match(
     /(turn on|turn off|toggle) (\d+),(\d+) through (\d+),(\d+)/
   );

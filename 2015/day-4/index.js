@@ -35,5 +35,5 @@ const startsWithSixZeros = function (secret) {
 
 const secret = "yzbqklnj";
 
-console.log(startsWithFiveZeros(secret));
-console.log(startsWithSixZeros(secret));
+console.log(`Starts with five zeros: ${startsWithFiveZeros(secret)}`);
+console.log(`Starts with six zeros: ${startsWithSixZeros(secret)}`);
